@@ -18,7 +18,7 @@ function graphic() {
     const wavelength = 50; // Wavelength of sine wave
     const threshold = Rune.random(300, 600); // Where slice should happen
     const xVar = Rune.random(0.5, 1.5) // Angle of slice
-    const yVar = Rune.random(-1.5, 1.5) // Angle of slice
+    const yVar = Rune.random(-1, 1) // Angle of slice
 
     // Group to hold the lines
     const lGrp = r.group(margin, margin);
