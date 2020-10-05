@@ -32,27 +32,33 @@ function graphic() {
         // Start a path
         let path = r.path(0, y, lGrp).fill("none");
 
+        // Track distance since path start
+        let dx = 0;
+
         // Loop over x pixels
         for (let x = 0; x < w; x++) {
 
             // Check if slice threshold has passed
             let threshPassed = (xVar * x) + (yVar * y) > threshold;
 
-            // If the slice threshold has been crossed and flipped hasn't happened yet
-            if (!flipped && threshPassed) {
-
-                flipped = true; // Track it
-                path = r.path(x, y, lGrp).fill("none") // Start a new path
-            }
-
-            // Invert if threshold has been passed
+            // Invert sin wave if threshold has been passed
             const slice = threshPassed ? 1 : -1
 
             // y modification
-            const dy = Math.sin(x / wavelength) * amplitude * slice
+            const dy = Math.sin(dx / wavelength) * amplitude * slice
 
-            // draw the next point in the line
-            path.lineTo(x, dy)
+            // If the slice threshold has been crossed and flipped hasn't happened yet
+            if (!flipped && threshPassed) {
+                dx = 0; // Reset x counter	
+                flipped = true; // Track it
+                path = r.path(x, y + dy, lGrp).fill("none") // Start a new path
+            } else {
+            	// draw the next point in the line
+            	path.lineTo(dx, dy)
+            }
+
+            // Increment dx
+            dx++;
         }
     }
 }
