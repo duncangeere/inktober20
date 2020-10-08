@@ -15,7 +15,7 @@ function graphic() {
 
     // Grid variables
     const rows = 15;
-    const cols = Math.floor(1.414 * rows);
+    const cols = Math.round(1.414 * rows);
     const rowH = h / rows;
     const colW = w / cols;
 
@@ -43,17 +43,17 @@ function graphic() {
     // Loop over the teeth array
     for (let tooth of teeth) {
 
-    	// Get a peturbation value 
-    	const noiseResult = noise.get(tooth.state.x * nFac, tooth.state.y * nFac);
+        // Get a peturbation value 
+        const noiseResult = noise.get(tooth.state.x * nFac, tooth.state.y * nFac);
 
-    	// Only pick those where noise is high and multiply by maxPeturb
-    	const peturb = (noiseResult > 0.5) ? (noiseResult - 0.5) * 2 * maxPeturb: 0;
+        // Only pick those where noise is high and multiply by maxPeturb
+        const peturb = (noiseResult > 0.5) ? (noiseResult - 0.5) * 2 * maxPeturb : 0;
 
         // loop over that tooth's vertices
         for (let i = 0; i < tooth.state.vectors.length; i++) {
 
-        	// Peturb each vertex
-        	tooth.state.vectors[i] = tooth.state.vectors[i].add(new Rune.Vector(peturb,0).rotate(Rune.random(360)));
+            // Peturb each vertex
+            tooth.state.vectors[i] = tooth.state.vectors[i].add(new Rune.Vector(peturb, 0).rotate(Rune.random(360)));
         }
     }
 
@@ -61,7 +61,7 @@ function graphic() {
     function houndstooth(x, y, width, height, col, grp) {
 
         // Start a polygon
-        let tooth = r.polygon(x, y, grp).fill(col) //.stroke("none")
+        let tooth = r.polygon(x, y, grp).fill(col).stroke("none")
 
         // Calculate sizes
         const xStep = width / 4;
