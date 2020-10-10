@@ -1,7 +1,7 @@
 const r = new Rune({
     container: "body",
-    width: 1123,
-    height: 794,
+    width: 794,
+    height: 562,
     debug: true
 });
 
@@ -12,15 +12,16 @@ function graphic() {
     const w = r.width - (margin * 2);
     const h = r.height - (margin * 2);
     const grp = r.group(margin, margin);
+    const grp2 = r.group(margin, margin)
 
     // Possible range of colours (not really relevant for plotter, but it's nice to have in the generator)
     const colourWidth = 100;
 
     // One wasn't enough, three was too many
-    aurora(100);
-    aurora(200);
+    aurora(100, grp);
+    aurora(200, grp2);
 
-    function aurora(lines) {
+    function aurora(lines, yMod, grp) {
 
         // Noise variables
         const noise = new Rune.Noise().noiseDetail(4, 0.5);
