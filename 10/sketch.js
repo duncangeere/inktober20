@@ -21,7 +21,7 @@ function graphic() {
     aurora(100, grp);
     aurora(200, grp2);
 
-    function aurora(lines, yMod, grp) {
+    function aurora(lines, grp) {
 
         // Noise variables
         const noise = new Rune.Noise().noiseDetail(4, 0.5);
