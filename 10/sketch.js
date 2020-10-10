@@ -7,9 +7,6 @@ const r = new Rune({
 
 function graphic() {
 
-	// Dark background - remember to delete this rect from the SVG!
-    r.rect(0, 0, r.width, r.height).stroke("none").fill(0)
-
     // Page variables
     const margin = 50;
     const w = r.width - (margin * 2);
@@ -20,12 +17,12 @@ function graphic() {
     const colourWidth = 100;
 
     // One wasn't enough, three was too many
-    aurora(100, grp);
-    aurora(200, grp);
+    aurora(100);
+    aurora(200);
 
-    function aurora(lines, grp) {
+    function aurora(lines) {
 
-    	// Noise variables
+        // Noise variables
         const noise = new Rune.Noise().noiseDetail(4, 0.5);
         const colFac = 0.02 // Noise multiplication factor for colour
         const yFac = 0.005 // Noise multiplication factor for y position
@@ -36,7 +33,7 @@ function graphic() {
 
         for (let i = 0; i < lines; i++) {
 
-        	// Figuring out line position
+            // Figuring out line position
             const x = i * w / lines;
             const y1 = 0.5 * h * noise.get(x * yFac, 0); // top of line
             const y2 = 0.5 * h * noise.get(0, i * lFac) // bottom of line
