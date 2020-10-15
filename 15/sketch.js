@@ -26,7 +26,7 @@ function graphic() {
     const o_sep = 3; // separation between other circles
     const o_arr = [];
 
-    const noise = new Rune.Noise().noiseDetail(4, 0.4);
+    const noise = new Rune.Noise().noiseDetail(4, 0.5);
     const nFac = 0.003 // Noise multiplication factor, higher = more zoomed out
 
     // Empty array to hold all the circles
