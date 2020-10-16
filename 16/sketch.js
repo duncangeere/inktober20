@@ -16,6 +16,7 @@ function graphic() {
     const res = 0.01; // Grid detail
     const octaves = 4; // noise octaves
     const falloff = 0.0001; // noise falloff
+    const rockProps = { width: 20, height: 80, noseHeight: 10, finHeight: 10 }; // Rocket properties
 
     // Calculated constants
     const left_x = Math.floor(r.width * -0.5);
@@ -72,7 +73,6 @@ function graphic() {
         const angle = grid[col_i][row_i];
 
         // Draw the rocket
-        const rockProps = { width: 20, height: 80, noseHeight: 10, finHeight: 10 };
         const rocket = r.polygon(startPoint.x, startPoint.y).fill("red").stroke("none")
             .lineTo(-rockProps.width / 2 - rockProps.finHeight, 0)
             .lineTo(-rockProps.width / 2, -rockProps.finHeight)
